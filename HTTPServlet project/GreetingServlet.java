@@ -22,13 +22,14 @@ public class GreetingServlet extends HttpServlet {
  String votreNom = null;
  String role=null;
  String delete=null;
+ int del;
  String nomPrenom = "Anonymous";
  votreNom = request.getParameter("nom");
  role = request.getParameter("role");
  delete = request.getParameter("delete");
- System.out.println(delete);
+ del= Integer.parseInt(delete);
  
- if (delete=="Non") {
+ if (del==0) {
 
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -157,7 +158,7 @@ doGet(request,response);
 			else out.println(nomPrenom + "n'existe pas dans la base de données");
 			
 		} catch (Exception e) {
-			System.out.println("Erreur dans delete "+e );
+			System.out.println(e );
 		}
 	 
  }
